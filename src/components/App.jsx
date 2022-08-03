@@ -34,8 +34,10 @@ class App extends Component  {
 
    visibleContacts =() =>{
      const {contacts,filter}= this.state;
-     return contacts.filter((contacts) =>contacts.name.toLowerCase().includes(filter.toLowerCase()))
-   } 
+    //  return contacts.filter(contact =>contact.name.toUpperCase().includes(filter.toUpperCase()))
+      const normalizefilter = filter.toUpperCase();
+      return contacts.filter(contacts => contacts.name.toUpperCase().includes(normalizefilter))
+    } 
   
   changeFilter= e =>{
     this.setState({filter: e.currentTarget.value})

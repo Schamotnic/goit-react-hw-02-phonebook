@@ -15,7 +15,7 @@ import PropTypes from "prop-types";
 }
 
 Filter.propTypes = {
-   value: PropTypes.node.isRequired,
+   value: PropTypes.string.isRequired,
    onChange: PropTypes.func.isRequired
 }
 
