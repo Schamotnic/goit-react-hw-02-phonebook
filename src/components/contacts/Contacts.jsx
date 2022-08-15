@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
  <Ul>
 {contacts.map(({id,name,number}) =>(
    <Li key={id}>
-<Span>{name.toUpperCase()}</Span>
+<Span>{name}</Span>
 <Span>{number}</Span>
 <Button onClick={()=> onDelete(id)}>Удалить</Button>
    </Li>
@@ -19,8 +19,8 @@ import PropTypes from "prop-types";
   
    contacts: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
-      id:PropTypes.number.isRequired
+      number: PropTypes.string.isRequired,
+      id:PropTypes.string.isRequired
    })).isRequired,
    onDelete: PropTypes.func.isRequired
 }

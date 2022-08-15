@@ -20,7 +20,8 @@ class App extends Component  {
   
   formSubmitHandler = ({name, number}) =>{
    const {contacts}= this.state
-   const newData = {id: nanoid(), name, number}
+   
+  const  newData = {id: nanoid(), name, number}
    
    if(contacts.some(e => e.name === name)){
      alert(`${name} is alredy in contacts`)
@@ -48,9 +49,19 @@ class App extends Component  {
     contacts:prevState.contacts.filter(li => li.id !== contactsId)  
     }))
   }
-  
-  
-  
+
+  componentDidUpdate(prevProps, prevState){
+if (this.state.contacts !== prevState.contacts ){
+ localStorage.setItem ("contacts",JSON.stringify(this.state.contacts))
+
+}
+  }
+  componentDidMount(){
+    const contactes = localStorage.getItem('contacts')
+    const parselContacts = JSON.parse(contactes)
+    this.setState({contacts: parselContacts})
+  }
+   
   render(){
     const {filter} = this.state
     const searchContacts =this.visibleContacts()
